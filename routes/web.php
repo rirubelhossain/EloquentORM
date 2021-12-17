@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController ;
+use App\Http\Controllers\PostController ;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +22,7 @@ Route :: get('/student', [StudentController::class , 'fetchstudent']) ;
 //     return view('welcome');
 // });
 
-
+/// Eloquent ORM
+Route :: get('/add-post', [PostController::class , 'addpost']);
+Route :: post('/create-post', [PostController::class,'createPost'])->name('create.post');
+Route :: get('/get-post', [PostController::class, 'getPost'])->name('get.post');
