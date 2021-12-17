@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StudentController ;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route :: get('/student', [StudentController::class , 'fetchstudent']) ;
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
