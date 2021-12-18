@@ -25,4 +25,9 @@ Route :: get('/student', [StudentController::class , 'fetchstudent']) ;
 /// Eloquent ORM
 Route :: get('/add-post', [PostController::class , 'addpost']);
 Route :: post('/create-post', [PostController::class,'createPost'])->name('create.post');
-Route :: get('/get-post', [PostController::class, 'getPost'])->name('get.post');
+Route :: get('/', [PostController::class, 'getPost'])->name('get.post');
+//Route :: get('/post/{id}', [PostController::class, 'getPostById'])->name('get.postid');
+Route :: get('/single-view/{id}', [PostController::class, 'singlePost'])->name('single-view') ;
+Route :: get('/delete-post/{id}', [PostController::class, 'deletePost'])->name('delete.post') ;
+Route :: get('/update-post/{id}', [PostController::class, 'updatePost'])->name('update.post') ;
+Route :: post('/finalUpdate-post',[PostController::class , 'finalUpdate'])->name('final.update');

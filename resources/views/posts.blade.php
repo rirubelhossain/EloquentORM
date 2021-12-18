@@ -18,6 +18,15 @@
                         <div class="card">
                             <div class="card-header">
                                 All Post
+                                @if(Session::has('post_deleted'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{Session::get('post_deleted')}}
+                                    </div>
+                                @endif
+
+                                <div >
+                                    <a href="/add-post" class="btn btn-success">Add New Post</a>
+                                </div>
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <thead>
@@ -25,6 +34,7 @@
                                                 <th>ID</th>
                                                 <th>Post Title</th>
                                                 <th>Post Description</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -33,6 +43,11 @@
                                                 <td>{{$post->id}}</td>
                                                 <td>{{$post->title}}</td>
                                                 <td>{{$post->body}}</td>
+                                                <td>
+                                                <a href="/single-view/{{$post->id}}" class="btn btn-success">View</a>
+                                                <a href="/update-post/{{$post->id}}" class="btn btn-info">Edit</a>
+                                                <a href="/delete-post/{{$post->id}}" class="btn btn-danger">Delete</a>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

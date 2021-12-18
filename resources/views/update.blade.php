@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Add Post</title>
+    <title>Update Post</title>
 </head>
 <body>
     
@@ -17,25 +17,26 @@
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
                         <div class="card-header">
-                            Add Post
+                            Update Post
                             <div class="card-body">
-                                @if(Session::has('post_created'))
+                                @if(Session::has('post_updated'))
                                     <div class="alert alert-success" role="alert">
-                                        {{Session::get('post_created')}}
+                                        {{Session::get('post_updated')}}
                                     </div>
                                 @endif
-                                <form action="{{route('create.post')}}" method="POST">
+                                <form action="{{route('final.update')}}" method="post">
                                     @csrf
+                                    <input type="hidden" name = "id" value="{{$post->id}}" />
                                     <div class="form-group">
                                         <label for="title">Post Title</label>
-                                        <input type="text" name="title" class="form-control" placeholder="Enter Post Title" />
+                                        <input type="text" name="title" value="{{$post->title}}" class="form-control" placeholder="Enter Post Title" />
                                     </div>
                                     <div class="form-group">
                                         <label for="body">Post Description</label>
-                                        <textarea name="body" class="form-control" id="" cols="" rows="3"></textarea>
+                                        <textarea type="text" name="body" class="form-control"  id="" cols="" rows="3">{{$post->body}}</textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Add Post</button>
-                                    <a href="/" class="btn btn-success">See The Post</a>
+                                    <button type="submit" class="btn btn-success">Update Post</button>
+                                    <a href="/" class="btn btn-success">Back To Main</a>
                                 </form>
                                 
                             </div>            
@@ -53,3 +54,5 @@
 
 </body>
 </html>
+
+
